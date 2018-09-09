@@ -1,0 +1,29 @@
+
+<!-- This file contains the HTML code that will go inside the 
+{{{body}}} in the 'main.handlebars'  file
+-->
+
+<h1>News Scraper!</h1>
+
+<h2>Find an interesting article</h2>
+
+<button type="button" class="btn btn-primary btn-lg" id="scrapingBTN">Scrape Articles </button>
+
+{{#if data}}
+{{#each value in data}}
+
+<p>{{value}}</p>
+
+  <br>
+
+    <h1 class="title">
+      {{ title }}
+    </h1>
+    <h2 id="article-link" class="subtitle" data-id="{{_id}}">
+      Article Link: {{ link }}
+    </h2>
+  <br>
+{{/each}}
+<p>sidghviuehsihsigehvsoh</p>
+{{/if}}
+
