@@ -29,8 +29,8 @@ app.set("view engine", "handlebars");
 // Requiring our HTML and API routes
 //-----------------------------------------
 // Requiring our HTML and API routes
-require("./controllers/htmlRoutes")(app);
-require("./controllers/apiRoutes")(app);
+require("./controllers/routes")(app);
+//require("./controllers/apiRoutes")(app);
 
 //Creating Mongoose connection
 //Using 'mongoose.connect()' will create a new mongDB if the specified DB doesn't already exist

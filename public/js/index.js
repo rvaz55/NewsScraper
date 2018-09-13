@@ -6,7 +6,7 @@ $(document).ready(function() {
     $("#scrapingBTN").on("click", function(event) {
         event.preventDefault()
         console.log("btn was clicked")
-        $.post("/api/scrape", function(data) {
+        $.post("/scrape", function(data) {
         console.log("printing here")
 
         })

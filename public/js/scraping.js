@@ -1,20 +1,17 @@
-// Our scraping tools
+// Requiring scraping tools
 const request = require("request");
 const cheerio = require("cheerio");
 
 //Requiring our models
 //After retrieving articles, the articles will be saved into the DB
-const articleModel = require("../models/Article")
+const articleModel = require("../../models/Article")
 
-// Routes
-// =============================================================
-module.exports = function (app) {
+//Function to create a new article object is separated because
+//allows the function to be resused in multiple places just by calling
+//the function as opposed to having to re-write the entire code block
 
-    //Function to create a new article object is separated because
-    //allows the function to be resused in multiple places just by calling
-    //the function as opposed to having to re-write the entire code block
+module.exports = function scrapingTheAtlantic(res) {
 
-    function scrapingTheAtlantic(res) {
         request("https://www.theatlantic.com/", function (error, response, html) {
 
             if (error) throw error; 
@@ -63,37 +60,3 @@ module.exports = function (app) {
             res.json({})
         })
     };
-
-    // function getStoredArticles(res){
-    //     articleModel
-    //     .find({})
-    //     .then(function(dbArticle) {
-    //       //console.log(data)
-    //       // If all Users are successfully found, send them back to the client
-    //       res.render("index", {data:dbArticle});
-    //     })
-    //     .catch(function(err) {
-    //       // If an error occurs, send the error back to the client
-    //       res.json(err);
-    //     });
-    // };
-
-    ///////////////////////////////////////////////////////
-    //When you visit this route, the server will 
-    //use Cherrio to scrape data from the specified site, and then save it to MongoDB.
-    app.post("/api/scrape", function (req, res) {
-
-        scrapingTheAtlantic(res);
-        
-
-    })
-   ///////////////////////////////////////////////////
-//    app.get("/api/getStored", function (req, res) {
-
-//         getStoredArticles();
-        
-//     })
-
-    ///////////////////////////////////////////////////
-}
-
