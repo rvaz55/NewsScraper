@@ -9,7 +9,12 @@
 
 <button type="button" class="btn btn-primary btn-lg" id="scrapingBTN">Scrape Articles </button>
 
-{{#if data}}
+{{#if data}} 
+
+<form action ="/deleteAllArticles" method="post">
+  <input type="submit" value="Delete All Articles" id="deleteAll">
+</form>
+
 {{#each data}}
 
 <p>{{value}}</p>
@@ -19,11 +24,11 @@
     <h1 class="title">
       {{ title }}
     </h1>
-    <h2 id="article-link" class="subtitle" data-id="{{_id}}">
+    <a id="article-link" class="subtitle" data-id="{{_id}}" href="{{link}}">
       Article Link: {{ link }}
-    </h2>
+    </a>
   <br>
 {{/each}}
-<p>sidghviuehsihsigehvsoh</p>
+
 {{/if}}
 

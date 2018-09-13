@@ -2,6 +2,7 @@
 //Requiring functions to getStoredArticles and to scrapeArticles
 const getStoredArticles = require("../public/js/retrieveStored")
 const scrapingTheAtlantic = require("../public/js/scraping")
+const deleteAllArticles = require("../public/js/deleteAllArts")
 
 // Routes
 // =============================================================
@@ -18,12 +19,18 @@ module.exports = function (app) {
    ///////////////////////////////////////////////////
     //Route for the homepage
     app.get("/", function(req, res, next){
-    console.log("printing on the html routes")
+    console.log("printing on the get '/' routes")
 
         getStoredArticles(res)
     
     })
-
     ///////////////////////////////////////////////////
+
+    app.post("/deleteAllArticles", function(req, res, next){
+        console.log("printing on the deleteAllArticles routes")
+    
+        deleteAllArticles(res);
+        
+        })
 }
 
