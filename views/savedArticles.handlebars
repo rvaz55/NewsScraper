@@ -1,0 +1,23 @@
+<h1>News Scraper!</h1>
+
+<h2>Saved Articles</h2>
+
+{{#if data}} 
+
+{{#each data}}
+
+  <br>
+    <h1 class="title">
+      {{ title }}
+    </h1>
+    <a id="article-link" class="subtitle" data-id="{{_id}}" href="{{link}}" data-saved="{{saved}}">
+      Article Link: {{ link }} 
+    </a>
+
+      {{!-- <form action ="/saveArticle/{{_id}}" method="post">
+      <input type="submit" value="Save Article" id="saveArticle">
+      </form> --}}
+      <br>
+{{/each}}
+
+{{/if}}

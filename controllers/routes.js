@@ -1,8 +1,10 @@
 
 //Requiring functions to getStoredArticles and to scrapeArticles
-const getStoredArticles = require("../public/js/retrieveStored")
-const scrapingTheAtlantic = require("../public/js/scraping")
-const deleteAllArticles = require("../public/js/deleteAllArts")
+const retrieveScraped = require("../public/js/retrieveScraped");
+const scrapingTheAtlantic = require("../public/js/scraping");
+const deleteAllArticles = require("../public/js/deleteAllArts");
+const saveArticle = require("../public/js/saveArticle");
+const displaySaved = require("../public/js/displaySaved")
 
 // Routes
 // =============================================================
@@ -21,16 +23,41 @@ module.exports = function (app) {
     app.get("/", function(req, res, next){
     console.log("printing on the get '/' routes")
 
-        getStoredArticles(res)
+        retrieveScraped(res)
     
     })
+
+    ///////////////////////////////////////////////////
+    //Route for the homepage
+    app.get("/displaySaved", function(req, res, next){
+        console.log("printing on the get '/displaySaved' routes")
+    
+        displaySaved(res);
+        
+        })
     ///////////////////////////////////////////////////
 
     app.post("/deleteAllArticles", function(req, res, next){
         console.log("printing on the deleteAllArticles routes")
     
-        deleteAllArticles(res);
+        deleteAllArticles(res)
+        window.location.reload("/")
+        
         
         })
+    ///////////////////////////////////////////////////
+    app.post("/saveArticle/:articleID", function(req, res, next){
+        console.log("printing on the saveArticle routes")
+        const articleID = req.params.articleID
+        console.log(articleID)
+
+
+        saveArticle(res,req, articleID);
+        window.location.reload("/")
+    
+        
+        
+        })
+
 }
 

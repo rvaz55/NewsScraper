@@ -1,6 +1,6 @@
 //Requiring Mongoose
 const mongoose = require("mongoose");
-//const ObjectId = mongoose.Types.ObjectId;
+
 // Save a reference to the Schema constructor
 const Schema = mongoose.Schema;
 
@@ -19,12 +19,5 @@ let articleSchema = new Schema(
 
 // Create article model from articleSchema
 let Article = mongoose.model('Article', articleSchema);
-
-//Save the newly created article object in our news_DB
-//But also not sure if I need this one....
-// articleSchema.save(function (err, Article) {
-//     if (err) return console.error(err);
-//     console.log(`This is the article obj: ${Article}`)
-//   });
 
 module.exports = Article ;

@@ -15,19 +15,24 @@
   <input type="submit" value="Delete All Articles" id="deleteAll">
 </form>
 
+<form action ="/displaySaved" method="get">
+  <input type="submit" value="Display Saved" id="displaySaved">
+</form>
+
 {{#each data}}
 
-<p>{{value}}</p>
-
   <br>
-
     <h1 class="title">
       {{ title }}
     </h1>
-    <a id="article-link" class="subtitle" data-id="{{_id}}" href="{{link}}">
+    <a id="article-link" class="subtitle" data-id="{{_id}}" href="{{link}}" data-saved="{{saved}}">
       Article Link: {{ link }}
     </a>
-  <br>
+
+      <form action ="/saveArticle/{{_id}}" method="post">
+      <input type="submit" value="Save Article" id="saveArticle">
+      </form>
+      <br>
 {{/each}}
 
 {{/if}}
