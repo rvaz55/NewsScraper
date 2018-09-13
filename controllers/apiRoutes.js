@@ -51,6 +51,7 @@ module.exports = function (app) {
                         console.log("this is dbArticle")
                         console.log(dbArticle)
                         console.log("Saved article in Mongodb!");
+                        res.json(dbArticle)
                      })
                      .catch(function(err) {
                        //console.log(dbArticle)
@@ -59,23 +60,23 @@ module.exports = function (app) {
             })
             // console.log('this is the res.render---')
             // console.log(res.render);
-            // res.render('sample')
+            res.json({})
         })
     };
 
-    function getStoredArticles(){
-        articleModel
-        .find({})
-        .then(function(dbArticle) {
-          //console.log(data)
-          // If all Users are successfully found, send them back to the client
-          res.json("index", {data:dbArticle});
-        })
-        .catch(function(err) {
-          // If an error occurs, send the error back to the client
-          res.json(err);
-        });
-    };
+    // function getStoredArticles(res){
+    //     articleModel
+    //     .find({})
+    //     .then(function(dbArticle) {
+    //       //console.log(data)
+    //       // If all Users are successfully found, send them back to the client
+    //       res.render("index", {data:dbArticle});
+    //     })
+    //     .catch(function(err) {
+    //       // If an error occurs, send the error back to the client
+    //       res.json(err);
+    //     });
+    // };
 
     ///////////////////////////////////////////////////////
     //When you visit this route, the server will 
@@ -83,15 +84,15 @@ module.exports = function (app) {
     app.post("/api/scrape", function (req, res) {
 
         scrapingTheAtlantic(res);
-        //res.json()
+        
 
     })
    ///////////////////////////////////////////////////
-   app.get("/api/getStored", function (req, res) {
+//    app.get("/api/getStored", function (req, res) {
 
-        getStoredArticles();
+//         getStoredArticles();
         
-    })
+//     })
 
     ///////////////////////////////////////////////////
 }
