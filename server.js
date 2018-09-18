@@ -32,12 +32,15 @@ app.set("view engine", "handlebars");
 require("./controllers/routes")(app);
 //require("./controllers/apiRoutes")(app);
 
+const MONGODB_URI = process.env.MONGODB_URI || 
+'mongodb://localhost/news_DB';
+
 //Creating Mongoose connection
 //Using 'mongoose.connect()' will create a new mongDB if the specified DB doesn't already exist
-mongoose.connect('mongodb://localhost/news_DB');
 
 // Get Mongoose to use the global promise library
 mongoose.Promise = global.Promise;
+mongoose.connect(MONGODB_URI);
 //The three lines below were taken from the Mongoose documentation
 //and either give us a 'error msg' or a 'connected msg + connects to the server'
 const db = mongoose.connection;
